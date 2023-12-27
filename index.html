@@ -6,7 +6,7 @@
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const socket = io("http://localhost:5000", { // Replace with your server's URL
+            const socket = io("ws://localhost:5000", { // Replace with your server's URL
                 withCredentials: true,
                 extraHeaders: {
                     "my-custom-header": "abcd"
