@@ -2,34 +2,26 @@
 <html>
 
 <head>
-    <title>API and WebSocket Test</title>
-    <!-- Add the Socket.IO client library -->
+    <title>Socket.IO Test</title>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-    <script type="text/javascript">
-        var socket = io('http://localhost:5000');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const socket = io("http://localhost:5000", { // Replace with your server's URL
+                withCredentials: true,
+                extraHeaders: {
+                    "my-custom-header": "abcd"
+                }
+            });
 
-        socket.on('connect', function () {
-            console.log('Connected to WebSocket server!');
-            socket.send('User has connected!');
+            socket.on("connect", () => {
+                console.log("connected to server");
+            });
         });
-
-        socket.on('response', function (data) {
-            console.log('Server:', data);
-        });
-
-        function testAPI() {
-            fetch('http://localhost:5000/api/hello')
-                .then(response => response.json())
-                .then(data => alert(JSON.stringify(data)))
-                .catch(error => alert('Error: ' + error));
-        }
     </script>
-
 </head>
 
 <body>
-    <h1>Testing API and WebSocket</h1>
-    <button onclick="testAPI()">Test API</button>
+    <h1>Socket.IO Test</h1>
 </body>
 
 </html>
