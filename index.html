@@ -3,25 +3,28 @@
 
 <head>
     <title>API and WebSocket Test</title>
-    <script src="https://cdn.socket.io/socket.io-3.0.3.min.js"></script>
+    <!-- Add the Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script type="text/javascript">
-        function testAPI() {
-            // Update this URL to your hosted backend URL
-            fetch('http://localhost:5000/api/hello')
-                .then(response => response.json())
-                .then(data => alert(JSON.stringify(data)))
-                .catch(error => alert('Error: ' + error));
-        }
+        var socket = io('http://localhost:5000');
 
-        var socket = io.connect('http://localhost:5000');
         socket.on('connect', function () {
+            console.log('Connected to WebSocket server!');
             socket.send('User has connected!');
         });
 
         socket.on('response', function (data) {
             console.log('Server:', data);
         });
+
+        function testAPI() {
+            fetch('http://localhost:5000/api/hello')
+                .then(response => response.json())
+                .then(data => alert(JSON.stringify(data)))
+                .catch(error => alert('Error: ' + error));
+        }
     </script>
+
 </head>
 
 <body>
