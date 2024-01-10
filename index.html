@@ -5,28 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Segin's Website</title>
-</head>
-
-<body>
     <style>
         body {
             background-color: rgb(8, 8, 8);
-            margin: 40px auto;
-            max-width: 650px;
-            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             font-size: 18px;
             color: #9b9b9b;
-            padding: 0 10px
         }
 
-        h1,
-        h2,
-        h3 {
-            line-height: 1.2
+        h1 {
+            line-height: 1.2;
+            display: inline-block;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            /* Width of the cursor */
+            background-color: #9b9b9b;
+            animation: blink 1s steps(1) infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
         }
     </style>
+</head>
 
-    <h1>Hi, i am segin</h1>
+<body>
+    <h1 data-value="Hi, I am Segin and i just wasted your 10 seconds of you time........."><span id="text"></span><span
+            class="cursor"></span></h1>
+    <script>
+        const textElement = document.getElementById('text');
+        const text = textElement.parentNode.getAttribute('data-value');
+        let index = 0;
+
+        function writeText() {
+            textElement.innerText = text.slice(0, index);
+            index++;
+
+            if (index > text.length) {
+                index = 0;
+            }
+        }
+
+        setInterval(writeText, 200);
+    </script>
 </body>
 
 </html>
