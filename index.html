@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Socket.IO Test</title>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const socket = io("ws://localhost:5000", { // Replace with your server's URL
-                withCredentials: true,
-                extraHeaders: {
-                    "my-custom-header": "abcd"
-                }
-            });
-
-            socket.on("connect", () => {
-                console.log("connected to server");
-            });
-        });
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segin's Website</title>
 </head>
 
 <body>
-    <h1>Socket.IO Test</h1>
+    <style>
+        body {
+            background-color: rgb(8, 8, 8);
+            margin: 40px auto;
+            max-width: 650px;
+            line-height: 1.6;
+            font-size: 18px;
+            color: #9b9b9b;
+            padding: 0 10px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2
+        }
+    </style>
+
+    <h1>Hi, i am segin</h1>
 </body>
 
 </html>
