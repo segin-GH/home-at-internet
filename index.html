@@ -16,20 +16,28 @@
             height: 100vh;
             font-size: 18px;
             color: #9b9b9b;
+            font-family: monospace;
+            /* Monospace font for equal character width */
         }
 
         h1 {
             line-height: 1.2;
-            display: inline-block;
+            position: relative;
+            /* For absolute positioning of cursor */
         }
 
         .cursor {
-            display: inline-block;
-            width: 10px;
-            /* Width of the cursor */
+            position: absolute;
+            width: 1ch;
+            /* Width of one character */
+            height: 1.2em;
+            /* Height of line */
             background-color: #9b9b9b;
             animation: blink 1s steps(1) infinite;
-            vertical-align: bottom;
+            left: 0;
+            /* Start at the beginning of the h1 */
+            top: 0;
+            /* Align to the top */
         }
 
         @keyframes blink {
@@ -41,15 +49,17 @@
 </head>
 
 <body>
-    <h1 data-value="Hi, I am Segin and i just wasted your 10 seconds of you time........."><span id="text"></span><span
+    <h1 data-value="Hi, I am Segin and I just wasted 10 seconds of your time........."><span id="text"></span><span
             class="cursor"></span></h1>
     <script>
         const textElement = document.getElementById('text');
+        const cursor = document.querySelector('.cursor');
         const text = textElement.parentNode.getAttribute('data-value');
         let index = 0;
 
         function writeText() {
             textElement.innerText = text.slice(0, index);
+            cursor.style.left = `${index}ch`; // Move cursor position
             index++;
 
             if (index > text.length) {
